@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignupScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SignUpScreen />
+      <HomeScreen />
     </SafeAreaView>
   );
 }
