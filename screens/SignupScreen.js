@@ -1,5 +1,6 @@
 import {
   Button,
+  KeyboardAvoidingView,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,9 +11,7 @@ import PrimaryButton from "../components/ui/PrimaryButton";
 import InputBox from "../components/ui/InputBox";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "../constants/styles";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useRef, useState } from "react";
-import IconButton from "../components/ui/IconButton";
 
 function SignUpScreen() {
   const [enteredName, setEnteredName] = useState("");
@@ -25,114 +24,124 @@ function SignUpScreen() {
   const passwordRef = useRef();
   const rePasswordRef = useRef();
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
-    >
-      <Text style={styles.title}>Let's start here</Text>
-      <InputBox
-        leftIcon$={
-          <Ionicons name="person-outline" size={24} color={Colors.Blue_Light} />
-        }
-        placeHolder={"Enter Name"}
-        label={"Name"}
-        inputOptions={{
-          returnKeyType: "next",
-          onSubmitEditing: () => emailRef.current.focus(),
-          value: enteredName,
-          onChangeText: (enteredText) => {
-            setEnteredName(enteredText);
-          },
-        }}
-      />
-      <InputBox
-        leftIcon$={
-          <Ionicons name="mail-outline" size={24} color={Colors.Blue_Light} />
-        }
-        placeHolder={"Enter Email"}
-        label={"Email"}
-        inputOptions={{
-          returnKeyType: "next",
-          ref: emailRef,
-          onSubmitEditing: () => usernameRef.current.focus(),
-          value: enteredEmail,
-          onChangeText: (enteredText) => {
-            setEnteredEmail(enteredText);
-          },
-        }}
-      />
-      <InputBox
-        leftIcon$={
-          <Ionicons name="person-outline" size={24} color={Colors.Blue_Light} />
-        }
-        placeHolder={"Enter Username"}
-        label={"Username"}
-        inputOptions={{
-          returnKeyType: "next",
-          ref: usernameRef,
-          onSubmitEditing: () => passwordRef.current.focus(),
-          value: enteredUsername,
-          onChangeText: (enteredText) => {
-            setEnteredUsername(enteredText);
-          },
-        }}
-      />
-      <InputBox
-        leftIcon$={
-          <Ionicons
-            name="lock-closed-outline"
-            size={24}
-            color={Colors.Blue_Light}
-          />
-        }
-        placeHolder={"Type in your password"}
-        label={"Password"}
-        inputOptions={{
-          returnKeyType: "next",
-          ref: passwordRef,
-          onSubmitEditing: () => rePasswordRef.current.focus(),
-          secureTextEntry: true,
-          value: enteredPassword,
-          onChangeText: (enteredText) => {
-            setEnteredPassword(enteredText);
-          },
-        }}
-      />
-      <InputBox
-        leftIcon$={
-          <Ionicons
-            name="lock-closed-outline"
-            size={24}
-            color={Colors.Blue_Light}
-          />
-        }
-        placeHolder={"Re-type your password"}
-        label={"Re-enter Password"}
-        inputOptions={{
-          returnKeyType: "done",
-          ref: rePasswordRef,
-          secureTextEntry: true,
-          value: enteredRePassword,
-          onChangeText: (enteredText) => {
-            setEnteredRePassword(enteredText);
-          },
-        }}
-      />
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.title}>Let's start here</Text>
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="person-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Enter Name"}
+          label={"Name"}
+          inputOptions={{
+            returnKeyType: "next",
+            onSubmitEditing: () => emailRef.current.focus(),
+            value: enteredName,
+            onChangeText: (enteredText) => {
+              setEnteredName(enteredText);
+            },
+          }}
+        />
+        <InputBox
+          leftIcon$={
+            <Ionicons name="mail-outline" size={24} color={Colors.Blue_Light} />
+          }
+          placeHolder={"Enter Email"}
+          label={"Email"}
+          inputOptions={{
+            returnKeyType: "next",
+            ref: emailRef,
+            onSubmitEditing: () => usernameRef.current.focus(),
+            value: enteredEmail,
+            onChangeText: (enteredText) => {
+              setEnteredEmail(enteredText);
+            },
+          }}
+        />
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="person-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Enter Username"}
+          label={"Username"}
+          inputOptions={{
+            returnKeyType: "next",
+            ref: usernameRef,
+            onSubmitEditing: () => passwordRef.current.focus(),
+            value: enteredUsername,
+            onChangeText: (enteredText) => {
+              setEnteredUsername(enteredText);
+            },
+          }}
+        />
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Type in your password"}
+          label={"Password"}
+          inputOptions={{
+            returnKeyType: "next",
+            ref: passwordRef,
+            onSubmitEditing: () => rePasswordRef.current.focus(),
+            secureTextEntry: true,
+            value: enteredPassword,
+            onChangeText: (enteredText) => {
+              setEnteredPassword(enteredText);
+            },
+          }}
+        />
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Re-type your password"}
+          label={"Re-enter Password"}
+          inputOptions={{
+            returnKeyType: "done",
+            ref: rePasswordRef,
+            secureTextEntry: true,
+            value: enteredRePassword,
+            onChangeText: (enteredText) => {
+              setEnteredRePassword(enteredText);
+            },
+          }}
+        />
 
-      <View style={[styles.row, { justifyContent: "flex-end" }]}>
-        <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
-          <Text style={styles.text}>Forgot password?</Text>
-        </Pressable>
-      </View>
+        <View style={[styles.row, { justifyContent: "flex-end" }]}>
+          <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
+            <Text style={styles.text}>Forgot password?</Text>
+          </Pressable>
+        </View>
 
-      <PrimaryButton
-        style={styles.buttonStyle}
-        title="Sign Up"
-        onPress={() => {
-          // TODO: Handle authenticate
-        }}
-      />
-    </ScrollView>
+        <PrimaryButton
+          style={styles.buttonStyle}
+          title="Sign Up"
+          onPress={() => {
+            // TODO: Handle authenticate
+          }}
+        />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 

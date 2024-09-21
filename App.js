@@ -4,6 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignupScreen";
 import HomeScreen from "./screens/HomeScreen";
+import ChatScreen from "./screens/ChatScreen";
+import PersonalChatScreen from "./screens/PersonalChatScreen";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,9 +21,11 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <HomeScreen />
-    </SafeAreaView>
+    <KeyboardProvider>
+      <SafeAreaView style={styles.container}>
+        <PersonalChatScreen />
+      </SafeAreaView>
+    </KeyboardProvider>
   );
 }
 

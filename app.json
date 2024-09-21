@@ -24,7 +24,6 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "softwareKeyboardLayoutMode": "pan",
       "splash": {
         "image": "./assets/splash.png",
         "resizeMode": "contain",
@@ -34,11 +33,14 @@
           "resizeMode": "contain",
           "backgroundColor": "#000000"
         }
-      }
+      },
+      "package": "com.anonymous.SocialMediaApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-font"]
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

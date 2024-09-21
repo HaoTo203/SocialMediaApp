@@ -1,5 +1,6 @@
 import {
   Button,
+  KeyboardAvoidingView,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -19,96 +20,106 @@ function LoginScreen() {
   const [enteredPassword, setEnteredPassword] = useState("");
   const passwordRef = useRef();
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      keyboardShouldPersistTaps="handled"
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior="padding"
+      enabled={false}
     >
-      <Text style={styles.title}>Discover your favorite spaces with us!</Text>
-      <InputBox
-        leftIcon$={
-          <Ionicons name="person-outline" size={24} color={Colors.Blue_Light} />
-        }
-        placeHolder={"Type your username/email"}
-        label={"Username"}
-        inputOptions={{
-          returnKeyType: "next",
-          onSubmitEditing: () => passwordRef.current.focus(),
-          value: enteredUsername,
-          onChangeText: (enteredText) => {
-            setEnteredUsername(enteredText);
-          },
-        }}
-      />
-      <InputBox
-        leftIcon$={
-          <Ionicons
-            name="lock-closed-outline"
-            size={24}
-            color={Colors.Blue_Light}
-          />
-        }
-        placeHolder={"Type your password"}
-        label={"Password"}
-        inputOptions={{
-          returnKeyType: "done",
-          ref: passwordRef,
-          secureTextEntry: true,
-          value: enteredPassword,
-          onChangeText: (enteredText) => {
-            setEnteredPassword(enteredText);
-          },
-        }}
-      />
-
-      <View style={styles.row}>
-        <BouncyCheckbox
-          onPress={(isChecked) => {}}
-          text="Remember me"
-          style={{ flex: 1 }}
-          textStyle={[styles.text, { textDecorationLine: "none" }]}
-          size={20}
-          fillColor={Colors.Blue_Light}
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Text style={styles.title}>Discover your favorite spaces with us!</Text>
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="person-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Type your username/email"}
+          label={"Username"}
+          inputOptions={{
+            returnKeyType: "next",
+            onSubmitEditing: () => passwordRef.current.focus(),
+            value: enteredUsername,
+            onChangeText: (enteredText) => {
+              setEnteredUsername(enteredText);
+            },
+          }}
         />
-        <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
-          <Text style={styles.text}>Forgot password?</Text>
-        </Pressable>
-      </View>
+        <InputBox
+          leftIcon$={
+            <Ionicons
+              name="lock-closed-outline"
+              size={24}
+              color={Colors.Blue_Light}
+            />
+          }
+          placeHolder={"Type your password"}
+          label={"Password"}
+          inputOptions={{
+            returnKeyType: "done",
+            ref: passwordRef,
+            secureTextEntry: true,
+            value: enteredPassword,
+            onChangeText: (enteredText) => {
+              setEnteredPassword(enteredText);
+            },
+          }}
+        />
 
-      <PrimaryButton
-        style={styles.buttonStyle}
-        title="Login"
-        onPress={() => {
-          // TODO: Handle authenticate
-        }}
-      />
-      <View style={{ alignItems: "center", marginVertical: 20 }}>
-        <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
-          <Text style={[styles.subText, { color: Colors.Blue_Light }]}>
-            Create account
-          </Text>
-        </Pressable>
-        <Text style={styles.subText}>or</Text>
-        <Text style={styles.subText}>Signup using</Text>
         <View style={styles.row}>
-          <IconButton
-            onPress={() => {
-              // TODO: Handle authenticate with facebook
-            }}
-            icon={
-              <Ionicons name="logo-facebook" size={24} color={Colors.Black} />
-            }
+          <BouncyCheckbox
+            onPress={(isChecked) => {}}
+            text="Remember me"
+            style={{ flex: 1 }}
+            textStyle={[styles.text, { textDecorationLine: "none" }]}
+            size={20}
+            fillColor={Colors.Blue_Light}
           />
-          <IconButton
-            onPress={() => {
-              // TODO: Handle authenticate with google
-            }}
-            icon={
-              <Ionicons name="logo-google" size={24} color={Colors.Black} />
-            }
-          />
+          <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
+            <Text style={styles.text}>Forgot password?</Text>
+          </Pressable>
         </View>
-      </View>
-    </ScrollView>
+
+        <PrimaryButton
+          style={styles.buttonStyle}
+          title="Login"
+          onPress={() => {
+            // TODO: Handle authenticate
+          }}
+        />
+        <View style={{ alignItems: "center", marginVertical: 20 }}>
+          <Pressable style={({ pressed }) => pressed && { opacity: 0.8 }}>
+            <Text style={[styles.subText, { color: Colors.Blue_Light }]}>
+              Create account
+            </Text>
+          </Pressable>
+          <Text style={styles.subText}>or</Text>
+          <Text style={styles.subText}>Signup using</Text>
+          <View style={styles.row}>
+            <IconButton
+              onPress={() => {
+                // TODO: Handle authenticate with facebook
+              }}
+              icon={
+                <Ionicons name="logo-facebook" size={24} color={Colors.Black} />
+              }
+            />
+            <IconButton
+              onPress={() => {
+                // TODO: Handle authenticate with google
+              }}
+              icon={
+                <Ionicons name="logo-google" size={24} color={Colors.Black} />
+              }
+            />
+          </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
