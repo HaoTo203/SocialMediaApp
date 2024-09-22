@@ -7,6 +7,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ChatScreen from "./screens/ChatScreen";
 import PersonalChatScreen from "./screens/PersonalChatScreen";
 import { KeyboardProvider } from "react-native-keyboard-controller";
+import NotificationsScreen from "./screens/NotificationsScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <KeyboardProvider>
       <SafeAreaView style={styles.container}>
-        <PersonalChatScreen />
+        <NotificationsScreen />
       </SafeAreaView>
     </KeyboardProvider>
   );
