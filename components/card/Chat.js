@@ -1,9 +1,10 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../constants/styles";
 
-function Chat({ isSender, seenNumber }) {
+function Chat({ onPress, isSender, seenNumber }) {
   return (
     <Pressable
+      onPress={onPress}
       style={({ pressed }) => [styles.container, pressed && { opacity: 0.7 }]}
       android_ripple={{ color: "#ccc" }}
     >

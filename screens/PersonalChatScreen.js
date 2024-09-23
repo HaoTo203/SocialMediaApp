@@ -67,7 +67,7 @@ const useGradualAnimation = () => {
   return { height };
 };
 
-function PersonalChatScreen() {
+function PersonalChatScreen({ navigation }) {
   const { height } = useGradualAnimation();
 
   const fakeView = useAnimatedStyle(() => {

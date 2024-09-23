@@ -26,12 +26,18 @@ const dummyData = [
   },
 ];
 
-function ChatScreen() {
+function ChatScreen({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <SearchBox />
       {dummyData.map(({ id }) => (
-        <Chat key={id} seenNumber={0} />
+        <Chat
+          onPress={() => {
+            navigation.navigate("PersonalChat");
+          }}
+          key={id}
+          seenNumber={0}
+        />
       ))}
     </ScrollView>
   );
@@ -40,7 +46,5 @@ function ChatScreen() {
 export default ChatScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.Gray_Light,
-  },
+  container: {},
 });

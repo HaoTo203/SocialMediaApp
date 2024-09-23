@@ -144,9 +144,6 @@ function HomeScreen() {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.Gray_Light,
-  },
   noneDataView: {
     alignItems: "center",
     marginHorizontal: 18,
