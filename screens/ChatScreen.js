@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/styles";
 import SearchBox from "../components/ui/SearchBox";
 import Chat from "../components/card/Chat";
@@ -28,18 +28,22 @@ const dummyData = [
 
 function ChatScreen({ navigation }) {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <>
       <SearchBox />
-      {dummyData.map(({ id }) => (
-        <Chat
-          onPress={() => {
-            navigation.navigate("PersonalChat");
-          }}
-          key={id}
-          seenNumber={0}
-        />
-      ))}
-    </ScrollView>
+      <FlatList
+        data={dummyData}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Chat
+            onPress={() => {
+              navigation.navigate("PersonalChat");
+            }}
+            key={item.id}
+            seenNumber={0}
+          />
+        )}
+      />
+    </>
   );
 }
 

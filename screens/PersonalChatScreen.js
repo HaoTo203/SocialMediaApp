@@ -52,6 +52,7 @@ const dummyData = [
   },
 ];
 
+// Use to get the height of the keyboard
 const useGradualAnimation = () => {
   const height = useSharedValue(0);
 
@@ -70,6 +71,7 @@ const useGradualAnimation = () => {
 function PersonalChatScreen({ navigation }) {
   const { height } = useGradualAnimation();
 
+  // A style of a view use to overide the keyboard position
   const fakeView = useAnimatedStyle(() => {
     return {
       height: Math.abs(height.value),
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 4,
     borderRadius: 8,
-    backgroundColor: Colors.White,
+    backgroundColor: "transparent",
     marginVertical: 0,
     marginHorizontal: 4,
   },

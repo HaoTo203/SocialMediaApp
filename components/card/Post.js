@@ -3,9 +3,9 @@ import { Colors } from "../../constants/styles";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Feather from "@expo/vector-icons/Feather";
 
-function Post() {
+function Post({ style }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Text style={styles.spaceName}>Space Name</Text>
 
       <View style={[styles.row, { marginHorizontal: 8, marginVertical: 4 }]}>

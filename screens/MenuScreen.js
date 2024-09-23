@@ -3,7 +3,7 @@ import { Colors } from "../constants/styles";
 import HorizontalLine from "../components/ui/HorizontalLine";
 import TextButton from "../components/ui/TextButton";
 
-function Menu() {
+function Menu({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -12,7 +12,12 @@ function Menu() {
           source={require("../assets/images/Avatar_1.png")}
         />
         <Text style={styles.name}>Name</Text>
-        <Pressable style={styles.profileContainer}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+          style={styles.profileContainer}
+        >
           <Text style={styles.profileText}>View Profile</Text>
         </Pressable>
       </View>
@@ -27,7 +32,14 @@ function Menu() {
         <TextButton>Manage Account</TextButton>
         <TextButton>Setting</TextButton>
         <TextButton>Support</TextButton>
-        <TextButton>Logout</TextButton>
+        <TextButton
+          onPress={() => {
+            // TODO: handle logout
+            console.log("Logout");
+          }}
+        >
+          Logout
+        </TextButton>
       </View>
     </View>
   );

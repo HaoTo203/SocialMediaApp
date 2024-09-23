@@ -135,8 +135,8 @@ function HomeScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {!hasData && <NoneDataView />}
-      {hasData && <MainView />}
+      {!!hasData && <NoneDataView />}
+      {!hasData && <MainView />}
     </ScrollView>
   );
 }

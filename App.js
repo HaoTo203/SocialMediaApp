@@ -14,6 +14,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "./constants/styles";
+import ProfileScreen from "./screens/ProfileScreen";
+import ChangeProfileScreen from "./screens/ChangeProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -94,6 +96,8 @@ export default function App() {
         />
         <Stack.Screen name="Notification" component={NotificationsScreen} />
         <Stack.Screen name="PersonalChat" component={PersonalChatScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="ChangeProfile" component={ChangeProfileScreen} />
       </Stack.Navigator>
     );
   }
